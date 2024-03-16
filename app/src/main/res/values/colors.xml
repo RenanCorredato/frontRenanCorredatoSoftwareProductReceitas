@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="arsenic">#353E47</color>
+    <color name="fuzzy_wuzzy">#D7696C</color>
+    <color name="garnet">#6C3536</color>
+    <color name="grullo">#A0978C</color>
+    <color name="alabaster">#F3EDE1</color>
+    <color name="cultured">#FAF8F3</color>
+
+    <color name="secondary_blue">#0C3559</color>
+    <color name="pink">#F21B42</color>
+    <color name="lighter_gray">#F2F2F2</color>
+    <color name="black_12">#1F0F0F0F</color>
+    <color name="black_5">#0D000000</color>
+    <color name="blue">#148BA6</color>
+</resources>

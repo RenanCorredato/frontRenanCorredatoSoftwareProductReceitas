@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_graph_home"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.br.receitaschurrasco.features.home.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_highFragment"
+            app:destination="@id/highFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.br.receitaschurrasco.features.details.view.RecipeDetailsFragment"
+        android:label="RecipeDetailsFragment" />
+    <fragment
+        android:id="@+id/highFragment"
+        android:name="com.br.receitaschurrasco.features.high.HighFragment"
+        android:label="fragment_high"
+        tools:layout="@layout/fragment_high" />
+</navigation>

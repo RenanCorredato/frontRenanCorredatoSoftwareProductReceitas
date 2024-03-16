@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvRecipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/arsenic"
+    android:elevation="40dp"
+    android:padding="5dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/alabaster"
+        android:paddingVertical="10dp">
+
+
+        <ImageView
+            android:id="@+id/imgTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_time"
+            app:layout_constraintEnd_toStartOf="@+id/txtTime"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/arsenic"
+            app:layout_constraintBottom_toBottomOf="@+id/imgTime"
+            app:layout_constraintEnd_toStartOf="@+id/imgPerson"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imgTime"
+            app:layout_constraintTop_toTopOf="@+id/imgTime"
+            tools:text="40 MIM." />
+
+        <ImageView
+            android:id="@+id/imgPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTime"
+            app:layout_constraintEnd_toStartOf="@+id/txtPortions"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtTime"
+            app:layout_constraintTop_toTopOf="@+id/txtTime" />
+
+        <TextView
+            android:id="@+id/txtPortions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:textColor="@color/arsenic"
+            app:layout_constraintBottom_toBottomOf="@+id/imgPerson"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgPerson"
+            app:layout_constraintTop_toTopOf="@+id/imgPerson"
+            tools:text="4 PORÇÕES" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/cultured"
+            app:layout_constraintTop_toBottomOf="@+id/imgTime" />
+
+        <ImageView
+            android:id="@+id/imgCard"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:src="@drawable/costela" />
+
+        <TextView
+            android:id="@+id/txtTitleRecipe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/fuzzy_wuzzy"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/alabaster"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgCard"
+            tools:text="Picanha Suína com Molho Barbecue" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
