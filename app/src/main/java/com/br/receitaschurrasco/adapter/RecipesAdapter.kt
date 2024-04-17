@@ -1,17 +1,17 @@
-package com.br.alpunto.adapter
+package com.br.receitaschurrasco.adapter
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.br.alpunto.model.recipes.Recipe
 import com.br.receitaschurrasco.R
 import com.br.receitaschurrasco.databinding.ProductCardItemBinding
+import com.br.receitaschurrasco.model.recipes.BarbecuesItem
 import com.bumptech.glide.Glide
 
 class RecipesAdapter(
-    private val recipesList: List<Recipe>,
-    private val onClickListener: (recipes: Recipe) -> Unit
+    private val recipesList: List<BarbecuesItem>,
+    private val onClickListener: (recipes: BarbecuesItem) -> Unit
 ) : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
 
 
@@ -32,22 +32,16 @@ class RecipesAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            recipes: Recipe,
-            onClickListener: (recipes: Recipe) -> Unit,
+            barbecuesItem: BarbecuesItem,
+            onClickListener: (recipes: BarbecuesItem) -> Unit,
         ) {
             with(binding) {
-                txtTitleRecipe.text = recipes.titleRecipe
-                txtTime.text = recipes.time
-                txtPortions.text = recipes.portion
+                nameReceita.text = barbecuesItem.nome
+                ingredients.text = barbecuesItem.ingredientes
+                instrucoes.text = barbecuesItem.instrucoes
                 cvRecipe.setOnClickListener {
-                    onClickListener(recipes)
+                    onClickListener(barbecuesItem)
                 }
-                Glide
-                    .with(itemView.context)
-                    .load(recipes.cardImage)
-                    .placeholder(R.drawable.no_image_available)
-                    .fitCenter()
-                    .into(imgCard)
             }
         }
     }
