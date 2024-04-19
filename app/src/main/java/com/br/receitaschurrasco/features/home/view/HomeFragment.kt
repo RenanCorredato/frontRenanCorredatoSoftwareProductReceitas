@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
@@ -154,59 +155,60 @@ class HomeFragment : Fragment() {
             dialog.show()
         }
     }
-}
 
-private fun deleteRecipe(id: String) {
-    binding.btnDelete.setOnClickListener {
-        viewModelHome.deleteRecipe(id)
-        viewModelHome.getRecipes()
+
+    private fun deleteRecipe(id: String) {
+        binding.btnDelete.setOnClickListener {
+            viewModelHome.deleteRecipe(id)
+            viewModelHome.getRecipes()
+        }
     }
-}
 
 
-private fun getRegister() {
-    binding.btnRegister.setOnClickListener {
-        // Inflar o layout da caixa de diálogo
-        val dialogView = layoutInflater.inflate(R.layout.dialog_register_recipe, null)
+    private fun getRegister() {
+        binding.btnRegister.setOnClickListener {
+            // Inflar o layout da caixa de diálogo
+            val dialogView = layoutInflater.inflate(R.layout.dialog_register_recipe, null)
 
-        // Criar uma instância do Dialog
-        val dialog = AlertDialog.Builder(requireContext())
-            .setTitle("Registrar Receita")
-            .setView(dialogView)
-            .setPositiveButton("Salvar") { dialogInterface, _ ->
-                // Recuperar as referências para os campos de texto dentro da caixa de diálogo
-                val editTextNome = dialogView.findViewById<EditText>(R.id.editTextNome)
-                val editTextIngredientes =
-                    dialogView.findViewById<EditText>(R.id.editTextIngredientes)
-                val editTextInstrucoes =
-                    dialogView.findViewById<EditText>(R.id.editTextInstrucoes)
+            // Criar uma instância do Dialog
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("Registrar Receita")
+                .setView(dialogView)
+                .setPositiveButton("Salvar") { dialogInterface, _ ->
+                    // Recuperar as referências para os campos de texto dentro da caixa de diálogo
+                    val editTextNome = dialogView.findViewById<EditText>(R.id.editTextNome)
+                    val editTextIngredientes =
+                        dialogView.findViewById<EditText>(R.id.editTextIngredientes)
+                    val editTextInstrucoes =
+                        dialogView.findViewById<EditText>(R.id.editTextInstrucoes)
 
-                // Obter os textos dos campos de texto
-                val nome = editTextNome.text.toString()
-                val ingredientes = editTextIngredientes.text.toString()
-                val instrucoes = editTextInstrucoes.text.toString()
+                    // Obter os textos dos campos de texto
+                    val nome = editTextNome.text.toString()
+                    val ingredientes = editTextIngredientes.text.toString()
+                    val instrucoes = editTextInstrucoes.text.toString()
 
-                // Criar um novo BarbecuesItem
-                val newRecipe = BarbecuesItem(
-                    nome = nome,
-                    ingredientes = ingredientes,
-                    instrucoes = instrucoes
-                )
+                    // Criar um novo BarbecuesItem
+                    val newRecipe = BarbecuesItem(
+                        nome = nome,
+                        ingredientes = ingredientes,
+                        instrucoes = instrucoes
+                    )
 
-                // Enviar o novo BarbecuesItem para o ViewModel
-                viewModelHome.postRecipe(newRecipe)
-                viewModelHome.getRecipes()
+                    // Enviar o novo BarbecuesItem para o ViewModel
+                    viewModelHome.postRecipe(newRecipe)
+                    viewModelHome.getRecipes()
 
-                // Fechar a caixa de diálogo
-                dialogInterface.dismiss()
-            }
-            .setNegativeButton("Cancelar") { dialogInterface, _ ->
-                // Cancelar a operação
-                dialogInterface.dismiss()
-            }
-            .create()
+                    // Fechar a caixa de diálogo
+                    dialogInterface.dismiss()
+                }
+                .setNegativeButton("Cancelar") { dialogInterface, _ ->
+                    // Cancelar a operação
+                    dialogInterface.dismiss()
+                }
+                .create()
 
-        // Mostrar a caixa de diálogo
-        dialog.show()
+            // Mostrar a caixa de diálogo
+            dialog.show()
+        }
     }
 }
