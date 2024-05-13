@@ -8,20 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.br.receitaschurrasco.adapter.RecipesAdapter
 import com.br.receitaschurrasco.features.home.viewmodel.HomeViewModel
 import com.br.receitaschurrasco.R
 import com.br.receitaschurrasco.databinding.FragmentHomeBinding
 import com.br.receitaschurrasco.model.recipes.BarbecuesItem
-import com.br.receitaschurrasco.utlis.ConstantsApp.Home.KEY_BUNDLE_RECIPES_ID
-import com.br.receitaschurrasco.utlis.ConstantsApp.Home.KEY_BUNDLE_RECIPES_INGREDIENTS
-import com.br.receitaschurrasco.utlis.ConstantsApp.Home.KEY_BUNDLE_RECIPES_PORTION
-import com.br.receitaschurrasco.utlis.ConstantsApp.Home.KEY_BUNDLE_RECIPES_TITLE
 
 
 class HomeFragment : Fragment() {
@@ -81,17 +75,19 @@ class HomeFragment : Fragment() {
 //                        val bundle = Bundle().apply {
 //                            barbecuesItem.id?.let { putInt(KEY_BUNDLE_RECIPES_ID, it.toInt()) }
                         val item = barbecuesItem.id.toString()
-                        deleteRecipe(item)
-
-                        Toast.makeText(context, "item Deletado ${item}", Toast.LENGTH_SHORT).show()
-
-                        upDate(item)
+//                        deleteRecipe(item)
+//
+//                        Toast.makeText(context, "item Deletado ${item}", Toast.LENGTH_SHORT).show()
+//
+//                        upDate(item)
 //
 //
 //                        }
 //                        findNavController().navigate(
 //                            R.id.action_homeFragment_to_recipeDetailsFragment,
 //                        )
+
+                        upDate(item)
                     }
                     with(binding) {
                         rvRecipes.apply {
@@ -116,7 +112,7 @@ class HomeFragment : Fragment() {
 
             // Criar uma instância do Dialog
             val dialog = AlertDialog.Builder(requireContext())
-                .setTitle("Atualizar Receita")
+                .setTitle("Editar Receita")
                 .setView(dialogView)
                 .setPositiveButton("Salvar") { dialogInterface, _ ->
                     // Recuperar as referências para os campos de texto dentro da caixa de diálogo
@@ -139,7 +135,7 @@ class HomeFragment : Fragment() {
                     )
 
                     // Enviar o novo BarbecuesItem para o ViewModel
-                    viewModelHome.putUpdateRecipe("")
+                    viewModelHome.putUpdateRecipe(item, newRecipe)
                     viewModelHome.getRecipes()
 
                     // Fechar a caixa de diálogo

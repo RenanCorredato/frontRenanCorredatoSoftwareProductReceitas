@@ -113,10 +113,10 @@ class HomeViewModel : BaseViewModel() {
 
     }
 
-    fun putUpdateRecipe(id: String) {
+    fun putUpdateRecipe(id: String, recipe: BarbecuesItem) {
         viewModelScope.launch {
             callApi(
-                suspend { homeUseCase.putUpdateRecipe(id) },
+                suspend { homeUseCase.putUpdateRecipe(id, recipe) },
                 onSuccess = {
                     _onSuccessUpDateRecipe.postValue(id as BarbecuesItem)
                 },

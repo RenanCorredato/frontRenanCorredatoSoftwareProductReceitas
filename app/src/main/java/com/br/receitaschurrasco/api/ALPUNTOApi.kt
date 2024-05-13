@@ -15,7 +15,7 @@ interface ALPUNTOApi {
     @PUT("barbecues/{id}")
     suspend fun putUpdateRecipe(
         @Path("id") id: String, // Se id for um tipo diferente de String, ajuste conforme necessário
-        @Body recipe: Barbecues? // Supondo que Recipe seja o tipo de objeto que você quer enviar no corpo da requisição
+        @Body recipe: BarbecuesItem // Supondo que Recipe seja o tipo de objeto que você quer enviar no corpo da requisição
     ): Response<Barbecues> // Ou o tipo que você espera receber de resposta do servidor
 
     @DELETE("barbecues/{id}")

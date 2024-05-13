@@ -25,11 +25,11 @@ class HomeRepository : BaseRepository() {
             }
     }
 
-   suspend fun putUpdateRecipe(id: String): ResponseApi {
+   suspend fun putUpdateRecipe(id: String, recipe: BarbecuesItem): ResponseApi {
         return safeApiCall {
             ApiService.alPuntoApi.putUpdateRecipe(
                 id = id,
-                recipe = null
+                recipe = recipe
             )
         }
     }

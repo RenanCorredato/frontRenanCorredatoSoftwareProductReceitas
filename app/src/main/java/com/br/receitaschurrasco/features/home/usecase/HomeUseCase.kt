@@ -21,7 +21,7 @@ class HomeUseCase {
         return homeRepository.deleteRecipe(id)
     }
 
-    suspend fun putUpdateRecipe(id: String):ResponseApi{
-        return homeRepository.putUpdateRecipe(id)
+    suspend fun putUpdateRecipe(id: String, recipe: BarbecuesItem):ResponseApi{
+        return homeRepository.putUpdateRecipe(id, recipe)
     }
 }
